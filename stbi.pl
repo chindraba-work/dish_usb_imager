@@ -41,6 +41,7 @@ use Time::HiRes;
 use Digest::MD5;
 use lib ".";
 use STBI::USB;
+use STBI::Image ':all';
 
 my $VERSION = '0.0.1';
 
@@ -49,6 +50,18 @@ checkUSB 'g';
 writeUSB 'g';
 verifyUSB 'g';
 wipeUSB 'g';
+
+setSourceServer;
+getSourceServer;
+verifyImage;
+verifyArchive;
+showManifest;
+makeImageMount;
+verifyTimestamp;
+checkRemoteAccess;
+giveRemoteVersion;
+giveRemoteTimestamp;
+retrieveRemote;
 
 1;
 
