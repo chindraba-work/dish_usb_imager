@@ -1,4 +1,4 @@
-# STB Image Updater
+# Dish USB Imager
 
 ## Contents
 

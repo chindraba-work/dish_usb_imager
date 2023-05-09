@@ -1,4 +1,4 @@
-# STB image Updater
+# Dish USB Imager
 
 ## Contents
 
@@ -14,43 +14,58 @@
 ---
 ## Description
 
-A Perl implementation for creating USB sticks with update images for set-top boxes in the Dish satellite network.
+This project is in initial development. Nothing is presumed to be working.
 
-The current, and past, images are hosted on Dish servers. The program needs to compare the local image to the remote image. If a new version is available, that image needs to be downloaded, as zip file and extracted. The program also needs the ability to copy that image to USB sticks attached to the computer, as well as to convert new, to the program, sticks for use by the program.
+### Roadmap
 
-The program needs to have 5 operational modes:
+  - Individual shell scripts will be developed for simple, mostly atomic, operations
+  - Initially each script will be set for direct CLI invocation
+  - Script command-line parameters may or may not be used
+  - Command-line parameters may or may not be documented
+  - I18n and l10n are planned for, yet may be inoperational in any given script
+  - Development of the `.po`, `.pot`, and `.mo` files for l10n will be 'as convenient'
+  - The sequence and level of script development will be based on serendipity and the need for use
+  - The eventual top-level script will see sporadic development as convenient and as other scripts are completed
+  - The bulk of the l10n operations will tied to, and performed by the top-level script
+  - There are no plans for, nor intentions of, support for Mac/Windows operation
+
+### Pending Description, Operational Objectives
+A Bash script for Dish STB update image USB sticks.
+
+The current, and past, images are hosted on Dish servers. The script needs to compare the local image to the remote image. If a new version is available, that image needs to be downloaded, as a zip file and extracted. The program also needs the ability to copy that image to USB sticks attached to the computer, as well as to convert new, to the program, sticks for use by the program.
+
+The script needs to have 5 operational modes:
   - Upon user request, check for remote updates and notify the user if none is available, or offer to download it if one is available
   - Upon user request, copy the local image to attached USB sticks, with the ability to select which sticks, of the ones available, are to be updated (sticks not prepared are not offered). Every stick written must also be verified with the results presented to the user. (Simultaneous writing is better)
   - Upon user request, prepare a USB stick for later use by the program
   - Upon user request, blank a USB stick, removing the update image, and restoring it to NTFS compatibility
-  - When invoked as a cron job, download the new update, if any, and update all eligible USB sticks attached to the system
+  - As a cron job, download the new update, if any, and update all eligible USB sticks attached to the system
 
-The plan is to develop in sections based on either the amount of user actions saved once working, or the speed with which the section can be implemented. Initial work will be CLI-based and hard-coded settings. After a fully operational CLI implementation is in service, updating to a GUI version will be started.
+The plan is to develop in sections based on either the amount of user actions saved once working, or the speed with which the section can be implemented. Initial work will be CLI-based and hard-coded settings. After a fully operational CLI implementation is in service, updating to a GUI version will be considered. semi-GUI from CLI using the `dialog` binary may be an option.
+
+Note: This is a rework from the original plan to use Perl script.
+
 
 [TOP](#contents)
 
 ---
 ## Requirements
 
-TODO
+  1. A working Bash shell binary, version 4+
+  2. Root-level access thru `sudo`
+  3. Ability to update root's `crontab`
+  4. Usable USB ports
+  5. Internet access
 
-Linux OS (BSD/Mac maybe, Window no, WSL probably not)
-Bash shell (maybe)
-Perl
-Perl Module Digest::MD5
-Perl Module Time::HiRes (I think)
-Perl Module LWP::Simple (I think)
-Probably a JSON module, or two
-Usable USB ports
-Internet connection (always-on probably)
-Root access with the ability to give the program root access (direct access to the USB. a la `dd` requires it)
 
 [TOP](#contents)
 
 ---
 ## Installation
 
-TODO
+Download the archive (version of choice) and uncompress it to `/opt/DishUSBImager/`. Then create a symlink to the script in `/usr/local/bin/`.
+
+Update the system `crontab`
 
 [TOP](#contents)
 
@@ -64,7 +79,7 @@ TODO
 ---
 ## Versioning
 
-The **STB Image Updater** project uses Semantic Versioning v2.0.0.
+The ** Dish USB Imager ** project uses Semantic Versioning v2.0.0.
 
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html) was created by [Tom Preston-Werner](http://tom.preston-werner.com/), inventor of Gravatars and cofounder of GitHub.
 
@@ -85,7 +100,7 @@ The MIT license applies to all the code within this repository.
 
 Copyright © 2023  Chindraba (Ronald Lamoreaux)
 
-   <[projects@chindraba.work](mailto:projects@chindraba.work?subject=STB_Image_Updater)>
+   <[projects@chindraba.work](mailto:projects@chindraba.work?subject=Dish%20USB%20Imager)>
 
 - All Rights Reserved
 
