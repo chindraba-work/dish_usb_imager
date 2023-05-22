@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# SPDX-License-Identifier: MIT
+
+# Copyright 2023 Chindraba (Ronald Lamoreaux) <dishusbimager@chindraba.work>
+
+usage() {
+    printf "%s\n" 'At least one argument must be provided.'
+}
+
+# Check for parameters, minimum of one required
+if [[ 0 -eq $# ]];
+then
+    ! usage >&2;
+    exit 1;
+fi
+
+printf "%s\n" 'At least one argument found.'
+# vim: syntax=bash ts=4 sw=4 sts=4 et sr
