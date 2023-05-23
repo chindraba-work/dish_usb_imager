@@ -4,8 +4,10 @@
 
 # Copyright 2023 Chindraba (Ronald Lamoreaux) <dishusbimager@chindraba.work>
 
+_messageOut() { printf "%s\n" "${@}"; }
+
 usage() {
-    printf "%s\n" 'At least one argument must be provided.'
+    _messageOut 'At least one argument must be provided.' >&2
 }
 
 # Check for parameters, minimum of one required
@@ -15,5 +17,5 @@ then
     exit 1;
 fi
 
-printf "%s\n" 'At least one argument found.'
+_messageOut 'At least one argument found.'
 # vim: syntax=bash ts=4 sw=4 sts=4 et sr
