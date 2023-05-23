@@ -4,10 +4,19 @@
 
 # Copyright 2023 Chindraba (Ronald Lamoreaux) <dishusbimager@chindraba.work>
 
+script_name="$(basename $0)"
+
 _messageOut() { printf "%s\n" "${@}"; }
 
+usage_text="${script_name}: A program to download STB update images for Dish TV techs.
+Usage:
+    ${script_name} option [option [option]]
+
+Use ${script_name} --help for more information.
+"
+
 usage() {
-    _messageOut 'At least one argument must be provided.' >&2
+    _messageOut "${usage_text}" >&2
 }
 
 # Check for parameters, minimum of one required
@@ -17,5 +26,5 @@ then
     exit 1;
 fi
 
-_messageOut 'At least one argument found.'
+_messageOut "Command options used were:" ${@}
 # vim: syntax=bash ts=4 sw=4 sts=4 et sr
