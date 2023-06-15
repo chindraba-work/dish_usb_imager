@@ -25,6 +25,10 @@ then
     ! usage >&2;
     exit 1;
 fi
+while [[ 0 -ne $# ]]
+do
+    _messageOut "Command option $1 read"
+    shift
+done
 
-_messageOut "Command options used were:" ${@}
 # vim: syntax=bash ts=4 sw=4 sts=4 et sr
