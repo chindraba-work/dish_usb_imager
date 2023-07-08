@@ -4,7 +4,15 @@
 
 # Copyright 2023 Chindraba (Ronald Lamoreaux) <dishusbimager@chindraba.work>
 
-script_name="$(basename $0)"
+script_source="${BASH_SOURCE[0]}"
+script_name="$(basename $script_source)"
+while [ -L "$script_source" ]
+do
+    script_dir="$( cd -P "$( dirname "$script_source" )" && pwd )"
+    script_source="$( readlink "$script_source" )"
+    [[ $script_source != /* ]] && script_source="$script_dir/$script_source"
+done
+script_dir="$( cd -P "$( dirname "$script_source" )" && pwd )"
 
 _messageOut() { printf "%s\n" "${@}"; }
 
