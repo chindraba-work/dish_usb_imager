@@ -16,6 +16,8 @@ script_dir="$( cd -P "$( dirname "$script_source" )" && pwd )"
 
 _messageOut() { printf "%s\n" "${@}"; }
 
+no_conf_text="No configuration file found. Loading defaults." >&2
+
 usage_text="${script_name}: A program to download STB update images for Dish TV techs.
 Usage:
     ${script_name} option [option [option]]
@@ -26,6 +28,20 @@ Use ${script_name} --help for more information.
 usage() {
     _messageOut "${usage_text}" >&2
 }
+
+if [[ -e '/etc/opt/DishUSBImagerrc' ]]
+then
+    source '/etc/opt/DishUSBImagerrc'
+elif [[ -e "${script_dir}/DishUSBImagerrc" ]]
+then
+    source "${script_dir}/DishUSBImagerrc"
+else
+    _messageOut "${no_conf_text}" >&2
+    image_repo='https://dns.dish.com/img_repo'
+    image_handle='STBImage'
+    image_archive='zip'
+    image_path=''
+fi
 
 # Check for parameters, minimum of one required
 if [[ 0 -eq $# ]];
