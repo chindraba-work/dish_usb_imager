@@ -14,24 +14,7 @@ do
 done
 script_dir="$( cd -P "$( dirname "$script_source" )" && pwd )"
 
-_messageOut() { printf "%s\n" "${@}"; }
-
-image_dir_not_found="The images directory named in the config file was not found.
-- Attempting to switch to default directories."
-making_image_dir="No directory for images found. Creating '/var/opt/DishUSBImager/'."
-missing_image_dir="Fatal Error:
-- The images directory could not be found or created.
-- Execution halted.
-"
-no_conf_text="No configuration file found. Loading defaults." >&2
-
-usage_text="${script_name}: A program to download STB update images for Dish TV techs.
-Usage:
-    ${script_name} option [option [option]]
-
-Use ${script_name} --help for more information.
-"
-
+source "${script_dir}/messages"
 
 usage() {
     _messageOut "${usage_text}" >&2
