@@ -2,33 +2,33 @@
 
 # SPDX-License-Identifier: MIT
 
-# Copyright 2023 Chindraba (Ronald Lamoreaux) <dishusbimager@chindraba.work>
+# Copyright 2023 Chindraba (Ronald Lamoreaux) <DishUSBImager@chindraba.work>
 
-# Configuration file for DishUSBImager script
+# Configuration file for DishUSBimager script
 
-# name: image_dir
+# name: archive_dir
 # type: string
-# value: local filesystem path for STB images and working directory
+# value: local filesystem path for STB image archives and working directory
 # - May be absolute or relative, though absolute is prefered for operability
-# - Defaults to the '/var/opt/DishUSBImager/' if it exists, otherwise
-# - to the 'images' subdirectory in the script's true path
-# image_dir=''
+# - Defaults to the '/var/opt/DishUSBimage/' if it exists, otherwise
+# - to the 'archives' subdirectory in the script's true path
+# archive_dir=''
 
-# name: image_handle
+# name: archive_handle
 # type: string
-# value: the file name for downloading STB images, exclusive of file extension
+# value: the file name for downloading STB image archive, exclusive of file extension
 # - Usually a generic name redirected by the server
-# image_handle='STBImage'
-# image_handle=''
+# archive_handle='STBimage'
+# archive_handle=''
 
-# name: image_archive
+# name: archive_type
 # type: string
-# value: the standard extension for the archive format of downloaded images
-# image_archive='zip'
-# image_archive=''
+# value: the standard extension for the format of downloaded archives
+# archive_type='zip'
+# archive_type=''
 
-# name: image_repo
+# name: archive_repo
 # type: string
-# value: URL of Dish network's repository of STB images
-# image_repo='https://dns.dish.com/img_repo'
-# image_repo=''
+# value: URL of Dish network's repository of STB image archives
+# archive_repo='https://dns.dish.com/img_repo'
+# archive_repo=''

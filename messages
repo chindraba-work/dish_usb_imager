@@ -2,19 +2,19 @@
 
 # SPDX-License-Identifier: MIT
 
-# Copyright 2023 Chindraba (Ronald Lamoreaux) <dishusbimager@chindraba.work>
+# Copyright 2023 Chindraba (Ronald Lamoreaux) <DishUSBImager@chindraba.work>
 
 # Messages file for DishUSBImager script
 
 _messageOut() { printf "%s\n" "${@}"; }
 
-image_dir_not_found="The images directory named in the config file was not found.
+archive_dir_not_found="The archives directory named in the config file was not found.
 - Attempting to switch to default directories."
 
-making_image_dir="No directory for images found. Creating '/var/opt/DishUSBImager/'."
+making_archive_dir="No directory for archives found. Creating '/var/opt/DishUSBImager/'."
 
-missing_image_dir="Fatal Error:
-- The images directory could not be found or created.
+missing_archive_dir="Fatal Error:
+- The archives directory could not be found or created.
 - Execution halted.
 "
 

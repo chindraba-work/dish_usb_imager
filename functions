@@ -2,7 +2,7 @@
 
 # SPDX-License-Identifier: MIT
 
-# Copyright 2023 Chindraba (Ronald Lamoreaux) <dishusbimager@chindraba.work>
+# Copyright 2023 Chindraba (Ronald Lamoreaux) <DishUSBImager@chindraba.work>
 
 # Helper functions for DishUSBImager script
 
@@ -10,33 +10,33 @@ usage() {
     _messageOut "${usage_text}" >&2
 }
 
-findImageDir() {
-    if [[ -n "$image_dir" ]]
+findArchiveDir() {
+    if [[ -n "$archive_dir" ]]
     then
-        if [[ -d "$( pwd )/${image_dir}" ]]
+        if [[ -d "$( pwd )/${archive_dir}" ]]
         then
-            image_dir="$( pwd )/${image_dir}"
-        elif [[ -d "${script_dir}/${image_dir}" ]]
+            archive_dir="$( pwd )/${archive_dir}"
+        elif [[ -d "${script_dir}/${archive_dir}" ]]
         then
-            image_dir="${script_dir}/${image_dir}"
-        elif [[ ! -d "$image_dir" ]]
+            archive_dir="${script_dir}/${archive_dir}"
+        elif [[ ! -d "$archive_dir" ]]
         then
-            _messageOut "$image_dir_not_found" >&2
-            image_dir=''
-            image_dir="$( findImageDir )"
+            _messageOut "$archive_dir_not_found" >&2
+            archive_dir=''
+            archive_dir="$( findArchiveDir )"
         fi
     elif [[ -d '/var/opt/DishUSBImager/' ]]
     then
-        image_dir='/var/opt/DishUSBImager'
-    elif [[ -d "${script_dir}/images" ]]
+        archive_dir='/var/opt/DishUSBImager'
+    elif [[ -d "${script_dir}/archives" ]]
     then
-        image_dir="${script_dir}/images"
+        archive_dir="${script_dir}/archives"
     else
-        _messageOut "$making_image_dir" >&2
+        _messageOut "$making_archive_dir" >&2
         mkdir -p '/var/opt/DishUSBImager'
-        image_dir='/var/opt/DishUSBImager'
+        archive_dir='/var/opt/DishUSBImager'
     fi
-    echo "$image_dir"
+    echo "$archive_dir"
 }
 
 if [[ -e '/etc/opt/DishUSBImagerrc' ]]
@@ -47,20 +47,20 @@ then
     source "${script_dir}/DishUSBImagerrc"
 else
     _messageOut "${no_conf_text}" >&2
-    image_repo='https://dns.dish.com/img_repo'
-    image_handle='STBImage'
-    image_archive='zip'
-    image_dir=''
+    archive_repo='https://dns.dish.com/img_repo'
+    archive_handle='STBImage'
+    archive_type='zip'
+    archive_dir=''
 fi
 
-image_path="$( findImageDir )/${image_handle:=STBImage}.${image_archive:=zip}"
-image_dir="$(dirname "$image_path")"
-if [[ ! -d "${image_dir}" ]]
+archive_path="$( findArchiveDir )/${archive_handle:=STBImage}.${archive_type:=zip}"
+archive_dir="$(dirname "$archive_path")"
+if [[ ! -d "${archive_dir}" ]]
 then
-    _messageOut "${missing_image_dir}" >&2
+    _messageOut "${missing_archive_dir}" >&2
     exit 1
 fi
-image_url="${image_repo:=https://dns.dish.com/img_repo}/${image_handle}.${image_archive}"
+archive_url="${archive_repo:=https://dns.dish.com/img_repo}/${archive_handle}.${archive_type}"
 
 
 # vim: syntax=bash ts=4 sw=4 sts=4 et sr
