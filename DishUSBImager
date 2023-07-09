@@ -16,60 +16,7 @@ script_dir="$( cd -P "$( dirname "$script_source" )" && pwd )"
 
 source "${script_dir}/messages"
 
-usage() {
-    _messageOut "${usage_text}" >&2
-}
-
-if [[ -e '/etc/opt/DishUSBImagerrc' ]]
-then
-    source '/etc/opt/DishUSBImagerrc'
-elif [[ -e "${script_dir}/DishUSBImagerrc" ]]
-then
-    source "${script_dir}/DishUSBImagerrc"
-else
-    _messageOut "${no_conf_text}" >&2
-    image_repo='https://dns.dish.com/img_repo'
-    image_handle='STBImage'
-    image_archive='zip'
-    image_dir=''
-fi
-
-findImageDir() {
-    if [[ -n "$image_dir" ]]
-    then
-        if [[ -d "$( pwd )/${image_dir}" ]]
-        then
-            image_dir="$( pwd )/${image_dir}"
-        elif [[ -d "${script_dir}/${image_dir}" ]]
-        then
-            image_dir="${script_dir}/${image_dir}"
-        elif [[ ! -d "$image_dir" ]]
-        then
-            _messageOut "$image_dir_not_found" >&2
-            image_dir=''
-            image_dir="$( findImageDir )"
-        fi
-    elif [[ -d '/var/opt/DishUSBImager/' ]]
-    then
-        image_dir='/var/opt/DishUSBImager'
-    elif [[ -d "${script_dir}/images" ]]
-    then
-        image_dir="${script_dir}/images"
-    else
-        _messageOut "$making_image_dir" >&2
-        mkdir -p '/var/opt/DishUSBImager'
-        image_dir='/var/opt/DishUSBImager'
-    fi
-    echo "$image_dir"
-}
-
-image_path="$( findImageDir )/${image_handle:=STBImage}.${image_archive:=zip}"
-image_dir="$(dirname "$image_path")"
-if [[ ! -d "${image_dir}" ]]
-then
-    _messageOut "${missing_image_dir}" >&2
-    exit 1
-fi
+source "${script_dir}/functions"
 
 # Check for parameters, minimum of one required
 if [[ 0 -eq $# ]];
