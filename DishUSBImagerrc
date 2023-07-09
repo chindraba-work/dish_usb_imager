@@ -10,7 +10,7 @@
 # type: string
 # value: local filesystem path for STB image archives and working directory
 # - May be absolute or relative, though absolute is prefered for operability
-# - Defaults to the '/var/opt/DishUSBimage/' if it exists, otherwise
+# - Defaults to the '/var/opt/DishUSBimage/archives' if it exists, otherwise
 # - to the 'archives' subdirectory in the script's true path
 # archive_dir=''
 

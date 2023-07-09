@@ -11,7 +11,7 @@ _messageOut() { printf "%s\n" "${@}"; }
 archive_dir_not_found="The archives directory named in the config file was not found.
 - Attempting to switch to default directories."
 
-making_archive_dir="No directory for archives found. Creating '/var/opt/DishUSBImager/'."
+making_archive_dir="No directory for archives found. Creating '/var/opt/DishUSBImager/archives/'."
 
 missing_archive_dir="Fatal Error:
 - The archives directory could not be found or created.

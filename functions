@@ -33,8 +33,8 @@ findArchiveDir() {
         archive_dir="${script_dir}/archives"
     else
         _messageOut "$making_archive_dir" >&2
-        mkdir -p '/var/opt/DishUSBImager'
-        archive_dir='/var/opt/DishUSBImager'
+        mkdir -p '/var/opt/DishUSBImager/archives' 2>/dev/null
+        archive_dir='/var/opt/DishUSBImager/archives'
     fi
     echo "$archive_dir"
 }
