@@ -6,3 +6,29 @@
 
 # Configuration file for DishUSBImager script
 
+# name: image_dir
+# type: string
+# value: local filesystem path for STB images and working directory
+# - May be absolute or relative, though absolute is prefered for operability
+# - Defaults to the '/var/opt/DishUSBImager/' if it exists, otherwise
+# - to the 'images' subdirectory in the script's true path
+# image_dir=''
+
+# name: image_handle
+# type: string
+# value: the file name for downloading STB images, exclusive of file extension
+# - Usually a generic name redirected by the server
+# image_handle='STBImage'
+# image_handle=''
+
+# name: image_archive
+# type: string
+# value: the standard extension for the archive format of downloaded images
+# image_archive='zip'
+# image_archive=''
+
+# name: image_repo
+# type: string
+# value: URL of Dish network's repository of STB images
+# image_repo='https://dns.dish.com/img_repo'
+# image_repo=''
