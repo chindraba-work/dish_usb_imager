@@ -16,7 +16,7 @@ do
 done
 script_dir="$( cd -P "$( dirname "$script_source" )" && pwd )"
 
-source "${script_dir}/messages"
+source "${script_dir}/LocaleData/DishUSBImager.msg"
 
 source "${script_dir}/functions"
 
