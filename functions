@@ -39,6 +39,16 @@ findArchiveDir() {
     echo "$archive_dir"
 }
 
+findArchiveVersion() {
+    _temp_version="$(curl -v "${archive_repo}/${archive_handle}.${archive_type}" 2>&1 1>/dev/null|grep -i '< Location'|cut -d"/" -f3|cut -d. -f1)"
+    if [[ -n "$_temp_version" ]]
+    then
+        echo $_temp_version
+    else
+         exit 1
+    fi
+}
+
 if [[ -e '/etc/opt/DishUSBImagerrc' ]]
 then
     source '/etc/opt/DishUSBImagerrc'
