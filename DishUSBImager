@@ -4,6 +4,12 @@
 
 # Copyright 2023 Chindraba (Ronald Lamoreaux) <DishUSBImager@chindraba.work>
 
+version='0.2.0'
+copy_year='2023'
+author_name='Chindraba (Ronald Lamoreaux)'
+author_email='dish_tool@chindraba.work'
+license='MIT License'
+
 # Force script to be run with root priv's.
 # Needed for all the direct hardware access.
 if [[ $(id -u) -ne 0 ]]; then
