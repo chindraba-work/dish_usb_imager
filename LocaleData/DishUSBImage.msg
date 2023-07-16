@@ -4,10 +4,6 @@
 
 # Messages file for DishUSBImager script
 
-messageOut() { printf "%s\n" "${@}"; }
-
-errorOut() { printf "%s\n" "${@}" >&2; }
-
 archive_dir_not_found="The archives directory named in the config file was not found.
 - Attempting to switch to default directories."
 

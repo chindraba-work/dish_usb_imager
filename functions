@@ -4,6 +4,9 @@
 
 # Helper functions for DishUSBImager script
 
+. "${script_dir}/scripts/errorOut.sh"
+. "${script_dir}/scripts/messageOut.sh"
+
 usage() {
     errorOut "${usage_text}"
 }
