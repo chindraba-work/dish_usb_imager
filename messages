@@ -18,6 +18,11 @@ missing_archive_dir="Fatal Error:
 - Execution halted.
 "
 
+missing_remote="Fatal Error:
+- The remote server is not responding with a valid archive version.
+- Execution halted.
+"
+
 no_conf_text="No configuration file found. Loading defaults." >&2
 
 usage_text="${script_name}: A program to download STB update images for Dish TV techs.

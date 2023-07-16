@@ -81,5 +81,11 @@ then
     exit 1
 fi
 
+remote_version="$( findArchiveVersion )"
+if [[ 0 -ne $? ]]
+then
+    _messageOut "${missing_remote}"
+    exit 1
+fi
 
 # vim: syntax=bash ts=4 sw=4 sts=4 et sr
