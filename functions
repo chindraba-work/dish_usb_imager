@@ -58,19 +58,21 @@ findLocalVersion() {
     echo "$( echo "$_local_version"|cut -d. -f1 )"
 }
 
-if [[ -e '/etc/opt/DishUSBImagerrc' ]]
-then
-    source '/etc/opt/DishUSBImagerrc'
-elif [[ -e "${script_dir}/DishUSBImagerrc" ]]
-then
-    source "${script_dir}/DishUSBImagerrc"
-else
-    _messageOut "${no_conf_text}" >&2
-    archive_repo='https://dns.dish.com/img_repo'
-    archive_handle='STBImage'
-    archive_type='zip'
-    archive_dir=''
-fi
+readConfiData() {
+    if [[ -e "/etc/opt/${config_name}" ]]
+    then
+        source '/etc/opt/DishUSBImagerrc'
+    elif [[ -e "${script_dir}/${config_name}" ]]
+    then
+        source "${script_dir}/${config_name}"
+    else
+        _messageOut "${no_conf_text}" >&2
+        archive_repo='https://dns.dish.com/img_repo'
+        archive_handle='STBImage'
+        archive_type='zip'
+        archive_dir=''
+    fi
+}
 
 loadVersionData() {
     archive_url="${archive_repo:=https://dns.dish.com/img_repo}/${archive_handle:=STBImage}.${archive_type:=zip}"

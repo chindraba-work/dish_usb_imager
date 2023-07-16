@@ -4,6 +4,8 @@
 
 # Copyright 2023 Chindraba (Ronald Lamoreaux) <DishUSBImager@chindraba.work>
 
+config_name='DishUSBImagerrc'
+
 script_source="${BASH_SOURCE[0]}"
 script_name="$(basename $script_source)"
 while [ -L "$script_source" ]
@@ -18,6 +20,7 @@ source "${script_dir}/messages"
 
 source "${script_dir}/functions"
 
+readConfiData
 loadVersionData
 
 # Check for parameters, minimum of one required
