@@ -4,6 +4,13 @@
 
 # Copyright 2023 Chindraba (Ronald Lamoreaux) <DishUSBImager@chindraba.work>
 
+# Force script to be run with root priv's.
+# Needed for all the direct hardware access.
+if [[ $(id -u) -ne 0 ]]; then
+    printf -v cmd_str '%q ' "$0" "$@"
+    exec sudo su -c "$cmd_str"
+fi
+
 config_name='DishUSBImagerrc'
 
 script_source="${BASH_SOURCE[0]}"
