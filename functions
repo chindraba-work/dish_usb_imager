@@ -53,14 +53,14 @@ else
     archive_dir=''
 fi
 
-archive_path="$( findArchiveDir )/${archive_handle:=STBImage}.${archive_type:=zip}"
-archive_dir="$(dirname "$archive_path")"
+archive_url="${archive_repo:=https://dns.dish.com/img_repo}/${archive_handle:=STBImage}.${archive_type:=zip}"
+archive_dir="$( findArchiveDir )"
+archive_path="${archive_dir}/${archive_handle}.${archive_type}"
 if [[ ! -d "${archive_dir}" ]]
 then
     _messageOut "${missing_archive_dir}" >&2
     exit 1
 fi
-archive_url="${archive_repo:=https://dns.dish.com/img_repo}/${archive_handle}.${archive_type}"
 
 
 # vim: syntax=bash ts=4 sw=4 sts=4 et sr
