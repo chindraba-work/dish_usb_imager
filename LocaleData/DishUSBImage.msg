@@ -4,7 +4,9 @@
 
 # Messages file for DishUSBImager script
 
-_messageOut() { printf "%s\n" "${@}"; }
+messageOut() { printf "%s\n" "${@}"; }
+
+errorOut() { printf "%s\n" "${@}" >&2; }
 
 archive_dir_not_found="The archives directory named in the config file was not found.
 - Attempting to switch to default directories."
@@ -21,7 +23,7 @@ missing_remote="Fatal Error:
 - Execution halted.
 "
 
-no_conf_text="No configuration file found. Loading defaults." >&2
+no_conf_text="No configuration file found. Loading defaults."
 
 usage_text="${script_name}: A program to download STB update images for Dish TV techs.
 Usage:

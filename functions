@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # SPDX-License-Identifier: MIT
 
 # Copyright 2023 Chindraba (Ronald Lamoreaux) <DishUSBImager@chindraba.work>
@@ -7,7 +5,7 @@
 # Helper functions for DishUSBImager script
 
 usage() {
-    _messageOut "${usage_text}" >&2
+    errorOut "${usage_text}"
 }
 
 findArchiveDir() {
@@ -21,7 +19,7 @@ findArchiveDir() {
             archive_dir="${script_dir}/${archive_dir}"
         elif [[ ! -d "$archive_dir" ]]
         then
-            _messageOut "$archive_dir_not_found" >&2
+            errorOut "$archive_dir_not_found"
             archive_dir=''
             archive_dir="$( findArchiveDir )"
         fi
@@ -32,7 +30,7 @@ findArchiveDir() {
     then
         archive_dir="${script_dir}/archives"
     else
-        _messageOut "$making_archive_dir" >&2
+        errorOut "$making_archive_dir"
         mkdir -p '/var/opt/DishUSBImager/archives' 2>/dev/null
         archive_dir='/var/opt/DishUSBImager/archives'
     fi
@@ -66,7 +64,7 @@ readConfiData() {
     then
         source "${script_dir}/${config_name}"
     else
-        _messageOut "${no_conf_text}" >&2
+        errorOut "${no_conf_text}"
         archive_repo='https://dns.dish.com/img_repo'
         archive_handle='STBImage'
         archive_type='zip'
@@ -80,14 +78,14 @@ loadVersionData() {
     archive_path="${archive_dir}/${archive_handle}.${archive_type}"
     if [[ ! -d "${archive_dir}" ]]
     then
-        _messageOut "${missing_archive_dir}" >&2
+        errorOut "${missing_archive_dir}"
         exit 1
     fi
     local_version="$( findLocalVersion )"
     remote_version="$( findArchiveVersion )"
     if [[ 0 -ne $? ]]
     then
-        _messageOut "${missing_remote}" >&2
+        errorOut "${missing_remote}"
         exit 1
     fi
 }

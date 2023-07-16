@@ -31,7 +31,7 @@ then
 fi
 while [[ 0 -ne $# ]]
 do
-    _messageOut "Command option $1 read"
+    messageOut "Command option $1 read"
     shift
 done
 
