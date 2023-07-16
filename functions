@@ -84,7 +84,7 @@ fi
 remote_version="$( findArchiveVersion )"
 if [[ 0 -ne $? ]]
 then
-    _messageOut "${missing_remote}"
+    _messageOut "${missing_remote}" >&2
     exit 1
 fi
 
