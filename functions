@@ -45,8 +45,17 @@ findArchiveVersion() {
     then
         echo $_temp_version
     else
-         exit 1
+        exit 1
     fi
+}
+
+findLocalVersion() {
+    _local_version="${archive_handle}.${archive_type}";
+    if [[ -s "$_local_version" ]]
+    then
+        _local_version="$(find . -inum $(stat --printf="%i" "$_local_version")|grep -v "$_local_version"|cut -d"/" -f2)"
+    fi
+    echo "$( echo "$_local_version"|cut -d. -f1 )"
 }
 
 if [[ -e '/etc/opt/DishUSBImagerrc' ]]
