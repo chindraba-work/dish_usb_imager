@@ -18,6 +18,8 @@ source "${script_dir}/messages"
 
 source "${script_dir}/functions"
 
+loadVersionData
+
 # Check for parameters, minimum of one required
 if [[ 0 -eq $# ]];
 then

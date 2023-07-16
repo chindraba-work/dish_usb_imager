@@ -72,20 +72,22 @@ else
     archive_dir=''
 fi
 
-archive_url="${archive_repo:=https://dns.dish.com/img_repo}/${archive_handle:=STBImage}.${archive_type:=zip}"
-archive_dir="$( findArchiveDir )"
-archive_path="${archive_dir}/${archive_handle}.${archive_type}"
-if [[ ! -d "${archive_dir}" ]]
-then
-    _messageOut "${missing_archive_dir}" >&2
-    exit 1
-fi
-
-remote_version="$( findArchiveVersion )"
-if [[ 0 -ne $? ]]
-then
-    _messageOut "${missing_remote}" >&2
-    exit 1
-fi
+loadVersionData() {
+    archive_url="${archive_repo:=https://dns.dish.com/img_repo}/${archive_handle:=STBImage}.${archive_type:=zip}"
+    archive_dir="$( findArchiveDir )"
+    archive_path="${archive_dir}/${archive_handle}.${archive_type}"
+    if [[ ! -d "${archive_dir}" ]]
+    then
+        _messageOut "${missing_archive_dir}" >&2
+        exit 1
+    fi
+    local_version="$( findLocalVersion )"
+    remote_version="$( findArchiveVersion )"
+    if [[ 0 -ne $? ]]
+    then
+        _messageOut "${missing_remote}" >&2
+        exit 1
+    fi
+}
 
 # vim: syntax=bash ts=4 sw=4 sts=4 et sr
